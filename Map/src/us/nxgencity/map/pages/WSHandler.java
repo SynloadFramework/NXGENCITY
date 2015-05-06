@@ -4,10 +4,13 @@ import java.lang.reflect.InvocationTargetException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+
+import us.nxgencity.map.elements.EditEntries;
 import us.nxgencity.map.elements.Entries;
 import us.nxgencity.map.elements.EntryPage;
 import us.nxgencity.map.events.LoadSlideEvent;
 import us.nxgencity.map.sql.Entry;
+
 import com.synload.eventsystem.events.RequestEvent;
 import com.synload.framework.OOnPage;
 import com.synload.framework.modules.annotations.Event;
@@ -48,5 +51,10 @@ public class WSHandler {
 	public void getConnect(RequestEvent event){
 		OOnPage.add(event.getSession(), "Map", "1");
 		event.getSession().send(new Entries(event.getSession(),event.getRequest().getTemplateCache()));
+	}
+	@Event(name="getEditMap",description="Connection Of Map",trigger={"get","editMap"},type=Type.WEBSOCKET)
+	public void getEditMap(RequestEvent event){
+		OOnPage.add(event.getSession(), "Map", "1");
+		event.getSession().send(new EditEntries(event.getSession(),event.getRequest().getTemplateCache()));
 	}
 }

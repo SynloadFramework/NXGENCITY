@@ -6,6 +6,7 @@ import java.util.List;
 
 import us.nxgencity.controls.elements.CreationPage;
 import us.nxgencity.controls.elements.SlideListings;
+import us.nxgencity.map.elements.EditEntries;
 import us.nxgencity.map.events.LoadSlideEvent;
 import us.nxgencity.map.sql.Entry;
 import us.nxgencity.map.sql.IconImage;
@@ -71,5 +72,10 @@ public class WSHandler {
 				| SQLException | InstantiationException | NoSuchMethodException | SecurityException | ClassNotFoundException | InvocationTargetException e1) {
 			e1.printStackTrace();
 		}
+	}
+	@Event(name="getEditEntry",description="Map Entry editor",trigger={"get","editEntry"},type=Type.WEBSOCKET)
+	public void getEditMap(RequestEvent event){
+		OOnPage.add(event.getSession(), "Map", "1");
+		event.getSession().send(new EditEntries(event.getSession(),event.getRequest().getTemplateCache()));
 	}
 }

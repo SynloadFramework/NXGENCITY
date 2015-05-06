@@ -15,7 +15,7 @@ import com.synload.framework.ws.WSHandler;
 public class CreationPage extends Response {
 	public String x="",
 			y="",
-			presenter="";
+			presenter="", body = "", notes="";
 	public List<IconImage> icons = new ArrayList<IconImage>();
 	public CreationPage(
 			WSHandler user,

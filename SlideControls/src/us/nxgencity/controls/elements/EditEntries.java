@@ -1,4 +1,4 @@
-package us.nxgencity.map.elements;
+package us.nxgencity.controls.elements;
 
 import java.lang.reflect.InvocationTargetException;
 import java.sql.SQLException;
@@ -20,7 +20,7 @@ public class EditEntries extends Response{
 		this.setTemplateId("EdEns");
 		this.setPageId("EditEntrs");
 		if(!templateCache.contains(this.getTemplateId())){
-			this.setTemplate(this.getTemplate("./elements/entries.html"));
+			this.setTemplate(this.getTemplate("./elements/entriesEdit.html"));
 		}
 		try {
 			entries = Entry._find(Entry.class, "").exec(Entry.class);
